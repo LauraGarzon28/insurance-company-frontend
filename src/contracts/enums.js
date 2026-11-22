@@ -5,7 +5,7 @@ export const Rol = {
   SUSCRIPTOR: 'SUSCRIPTOR',
   AJUSTADOR: 'AJUSTADOR',
   ADMIN: 'ADMIN',
-  ASESOR: 'ASESOR', // ext: el auth-service aún no define este rol
+  ASESOR: 'ASESOR',
 }
 
 export const ROL_LABEL = {

@@ -18,14 +18,14 @@ Crea `frontend/.env.local` con `VITE_MOCK_DOMAINS=all`. Cuentas (contraseña `De
 
 ## Qué es real y qué es simulado
 
-`VITE_MOCK_DOMAINS` (por defecto `polizas,siniestros`) decide qué dominios usan datos simulados.
-Cuando Pólizas y Siniestros estén migrados, quítalos de la lista: `services/polizasService.js` y
-`services/siniestrosService.js` ya traen la llamada HTTP real.
+`VITE_MOCK_DOMAINS` (por defecto `polizas`) decide qué dominios usan datos simulados.
+Pólizas permanece simulada porque el monolito no expone aún todos sus listados. Auth, clientes,
+cotizaciones y siniestros usan el backend real mediante el API Gateway.
 
 | Dominio | Estado |
 |---|---|
-| auth, clientes, cotizaciones | HTTP real vía gateway |
-| pólizas, siniestros | Mock por defecto. HTTP real ya escrito para los endpoints que existen en el monolito |
+| auth, clientes, cotizaciones, siniestros | HTTP real vía gateway |
+| pólizas | Mock por defecto hasta completar los listados del monolito |
 | reglas de suscripción, feedback | Siempre simulado (no hay endpoint) |
 
 ## Estructura

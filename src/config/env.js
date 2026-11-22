@@ -2,7 +2,7 @@
 const e = import.meta.env
 
 const mockDomains = new Set(
-  (e.VITE_MOCK_DOMAINS ?? 'polizas,siniestros').split(',').map((s) => s.trim()).filter(Boolean),
+  (e.VITE_MOCK_DOMAINS ?? 'polizas').split(',').map((s) => s.trim()).filter(Boolean),
 )
 
 export const env = {
