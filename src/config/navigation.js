@@ -12,6 +12,7 @@ export const NAV = [
   { to: '/app/revision', label: 'Revisión de riesgos', icon: 'clipboard', roles: [SUSCRIPTOR, ADMIN] },
   { to: '/app/reglas', label: 'Reglas vigentes', icon: 'book', roles: [SUSCRIPTOR, ADMIN] },
   { to: '/app/historico', label: 'Histórico de siniestros', icon: 'history', roles: [SUSCRIPTOR, ADMIN] },
+  { to: '/app/usuarios/nuevo', label: 'Crear usuario', icon: 'user', roles: [ADMIN] },
   { to: '/app/siniestros', label: 'Siniestros reportados', icon: 'inbox', roles: [ASESOR, ADMIN] },
   { to: '/app/siniestros', label: 'Mis casos asignados', icon: 'alert', roles: [AJUSTADOR] },
 ]

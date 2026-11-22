@@ -21,6 +21,7 @@ import ReportarSiniestro from './views/siniestros/ReportarSiniestro'
 import Revision from './views/suscripcion/Revision'
 import Reglas from './views/suscripcion/Reglas'
 import Historico from './views/suscripcion/Historico'
+import CrearUsuario from './views/usuarios/CrearUsuario'
 
 const { CLIENTE, SUSCRIPTOR, ASESOR, AJUSTADOR, ADMIN } = Rol
 
@@ -58,6 +59,9 @@ export default function App() {
             <Route path="revision" element={<Revision />} />
             <Route path="reglas" element={<Reglas />} />
             <Route path="historico" element={<Historico />} />
+          </Route>
+          <Route element={<RequireAuth roles={[ADMIN]} />}>
+            <Route path="usuarios/nuevo" element={<CrearUsuario />} />
           </Route>
         </Route>
       </Route>

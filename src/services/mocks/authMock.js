@@ -21,4 +21,14 @@ export const authMock = {
     db().users.push(u)
     return { id: u.id, username, correo, roles: u.roles }
   }),
+  crearInterno: simular(({ username, correo, password, roles }) => {
+    if (db().users.some((u) => u.username === username)) fallar('Ya existe un usuario con ese nombre de usuario', 409)
+    if (db().users.some((u) => u.correo === correo)) fallar('Ya existe un usuario con ese correo', 409)
+    const u = { id: uid(), username, correo, password, roles, clienteId: null }
+    db().users.push(u)
+    if (roles.includes('AJUSTADOR')) {
+      db().ajustadores.push({ id: u.id, nombre: u.username })
+    }
+    return { id: u.id, username, correo, roles: u.roles }
+  }),
 }
