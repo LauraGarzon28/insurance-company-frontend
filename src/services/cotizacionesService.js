@@ -1,5 +1,5 @@
 import { env } from '../config/env'
-import { http } from './http'
+import { http, qs } from './http'
 import { cotizacionesMock } from './mocks/cotizacionesMock'
 
 const base = env.endpoints.cotizaciones
@@ -18,11 +18,8 @@ const real = {
     return c
   },
   obtener: (id) => http.get(`${base}/${id}`),
-  listarPorCliente: async (clienteId) =>
-    (await Promise.allSettled(leerIds(clienteId).map((id) => http.get(`${base}/${id}`))))
-      .filter((r) => r.status === 'fulfilled').map((r) => r.value),
-  // shortcut: sin endpoint de bandeja; el suscriptor busca por id (ver vista Revisión).
-  listarPendientes: async () => [],
+  listarPorCliente: (clienteId) => http.get(`${base}${qs({ clienteId })}`),
+  listarPendientes: () => http.get(`${base}${qs({ estado: 'EN_REVISION_MANUAL' })}`),
   evaluar: (id, reglas) =>
     http.post(`${base}/${id}/evaluacion`, {
       versionReglas: reglas.version, tasaBase: reglas.tasaBase, umbralRevisionManual: reglas.umbralRevisionManual,
@@ -34,4 +31,4 @@ const real = {
 
 export const cotizacionesService = env.isMock('cotizaciones') ? cotizacionesMock : real
 /** Indica si existe un listado global de cotizaciones pendientes para el suscriptor. */
-export const hayBandejaPendientes = env.isMock('cotizaciones')
+export const hayBandejaPendientes = true

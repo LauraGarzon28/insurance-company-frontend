@@ -64,6 +64,7 @@ function Contenido({ c, reload, esStaff }) {
             <Card title="Riesgo asegurado">
               <div className="stack">
                 <Detail items={[
+                  ['ID completo', c.id],
                   ['Descripción', c.descripcionRiesgo], ['Valor asegurado', money(c.valorAsegurado)],
                   ...(esStaff ? [['Cliente', cliente.data ? `${cliente.data.nombreCompleto} (${cliente.data.tipoDocumento} ${cliente.data.numeroDocumento})` : '…']] : []),
                 ]} />

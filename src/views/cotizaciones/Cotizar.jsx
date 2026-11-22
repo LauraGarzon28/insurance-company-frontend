@@ -86,7 +86,12 @@ export default function Cotizar() {
     navigate('/app/confirmacion', {
       state: {
         title: '¡Cotización solicitada!', message: MENSAJES[c.estado], contexto: 'cotizacion',
-        details: [['Cotización', shortId(c.id)], ['Estado', ESTADO_META[c.estado].label], ['Prima anual', c.prima ? money(c.prima.monto) : 'Pendiente']],
+        details: [
+          ['Cotización', shortId(c.id)],
+          ['ID completo', c.id],
+          ['Estado', ESTADO_META[c.estado].label],
+          ['Prima anual', c.prima ? money(c.prima.monto) : 'Pendiente'],
+        ],
         actions: [{ label: 'Ver cotización', to: `/app/cotizaciones/${c.id}` }, { label: 'Cotizar otro riesgo', to: '/app/cotizar' }],
       },
     })

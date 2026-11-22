@@ -24,7 +24,7 @@ cotizaciones y siniestros usan el backend real mediante el API Gateway.
 
 | Dominio | Estado |
 |---|---|
-| auth, clientes, cotizaciones, siniestros | HTTP real vía gateway |
+| auth, clientes, cotizaciones, siniestros | HTTP real vía gateway, con listado por cliente y pendientes |
 | pólizas | Mock por defecto hasta completar los listados del monolito |
 | reglas de suscripción, feedback | Siempre simulado (no hay endpoint) |
 
