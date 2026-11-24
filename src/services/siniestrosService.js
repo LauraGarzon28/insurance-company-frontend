@@ -11,10 +11,9 @@ const guardarId = (id) => {
   try { localStorage.setItem(claveIds, JSON.stringify([id, ...leerIds().filter((x) => x !== id)])) } catch { /* sin persistencia */ }
 }
 
-// Contrato real (monolito): POST /siniestros, GET /{id}, POST /{id}/evaluacion.
 const real = {
-  reportar: async ({ polizaId, descripcion, valorAseguradoPoliza }) => {
-    const siniestro = await http.post(base, { polizaId, descripcion, valorAseguradoPoliza })
+  reportar: async ({ polizaId, descripcion }) => {
+    const siniestro = await http.post(base, { polizaId, descripcion })
     guardarId(siniestro.id)
     return siniestro
   },
@@ -33,9 +32,8 @@ const real = {
     http.get('/auth/usuarios/ajustadores').then((usuarios) =>
       usuarios.map((usuario) => ({ id: usuario.id, nombre: usuario.username, correo: usuario.correo }))),
   asignar: (id, ajustadorId) => http.post(`${base}/${id}/asignacion`, { ajustadorId }),
-  // El backend decide aprobar/rechazar con estadoPoliza + esFraude: un rechazo se envía como esFraude=true.
   evaluar: (id, { aprobado, montoPropuesto }) =>
-    http.post(`${base}/${id}/evaluacion`, { estadoPoliza: 'ACTIVA', esFraude: !aprobado, montoPropuesto: aprobado ? montoPropuesto : null }),
+    http.post(`${base}/${id}/evaluacion`, { esFraude: !aprobado, montoPropuesto: aprobado ? montoPropuesto : null }),
   cerrar: (id) => http.post(`${base}/${id}/cierre`),
 }
 

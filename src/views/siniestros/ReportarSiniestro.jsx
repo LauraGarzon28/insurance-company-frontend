@@ -34,7 +34,7 @@ function Formulario({ vigentes, inicial }) {
   const poliza = vigentes.find((x) => x.id === v.polizaId)
 
   const reportar = useAction(() => siniestrosService.reportar({
-    polizaId: poliza.id, descripcion: v.descripcion.trim(), valorAseguradoPoliza: poliza.valorAsegurado, fechaOcurrencia: v.fechaOcurrencia,
+    polizaId: poliza.id, descripcion: v.descripcion.trim(), fechaOcurrencia: v.fechaOcurrencia,
   }))
 
   const onSubmit = async (e) => {
