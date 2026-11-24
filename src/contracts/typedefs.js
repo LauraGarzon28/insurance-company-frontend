@@ -44,7 +44,7 @@
  * @property {number} valorAsegurado
  * @property {string} fechaInicio   ISO yyyy-mm-dd
  * @property {string} fechaFin      ISO yyyy-mm-dd
- * @property {'VIGENTE'|'VENCIDA'|'CANCELADA'|'EN_CANCELACION'} estado
+ * @property {'VIGENTE'|'VENCIDA'|'CANCELADA'} estado
  * @property {string} [numero]      ext
  * @property {string} [cotizacionId] ext
  * @property {string} [tipoRiesgo]  ext
